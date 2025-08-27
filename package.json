@@ -4,6 +4,7 @@
   "description": "SICPA Audits - Project Audit Analysis Platform",
   "main": "index.html",
   "scripts": {
+    "build": "echo 'No build required for static HTML app'",
     "start": "python3 -m http.server 8000",
     "serve": "npx serve .",
     "dev": "python3 -m http.server 8000"
