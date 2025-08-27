@@ -9,12 +9,14 @@ function setupTooltip() {
     }
 }
 
+
+
 function createVelocityChart() {
     const svg = d3.select('#velocityChart');
     const container = svg.node().parentNode;
     const containerRect = container.getBoundingClientRect();
     const width = containerRect.width - 40;
-    const height = 200;
+    const height = 200; //test
     
     svg.attr('width', width).attr('height', height);
     
