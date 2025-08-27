@@ -74,7 +74,7 @@ Azure will automatically:
 ## Configuration Files Explained
 
 ### `staticwebapp.config.json`
-```json
+```json 
 {
   "routes": [
     { "route": "/", "serve": "/index.html" },
