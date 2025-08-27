@@ -1,0 +1,42 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "serve": "/index.html"
+    },
+    {
+      "route": "/main",
+      "serve": "/main.html"
+    },
+    {
+      "route": "/settings",
+      "serve": "/settings.html"
+    },
+    {
+      "route": "/create-audit",
+      "serve": "/create-audit.html"
+    },
+    {
+      "route": "/dashboard",
+      "serve": "/dashboard.html"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["*.js", "*.css", "*.png", "*.jpg", "*.svg", "*.ico"]
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".js": "application/javascript",
+    ".css": "text/css",
+    ".html": "text/html"
+  },
+  "globalHeaders": {
+    "Cache-Control": "public, max-age=31536000"
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html"
+    }
+  }
+}

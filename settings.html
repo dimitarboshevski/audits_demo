@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SICPA Audits - Settings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="https://www.sicpa.com/themes/custom/sicpa_theme/images/logos/Logo_Sicpa_RGB.svg" alt="SICPA Logo" class="sidebar-logo">
+            <div class="sidebar-title">SICPA Audits</div>
+        </div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="main.html" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                        </svg>
+                        Audits
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link active">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                        </svg>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>Settings</h1>
+            <div class="user-info">
+                <div class="user-avatar">JD</div>
+                <span class="user-name">John Doe</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+        
+                <!-- Connection Status Overview -->
+        <div class="card connection-status-card">
+            <h2>📊 Connection Status</h2>
+            <div class="connection-overview">
+                <div class="connection-item">
+                    <div class="connection-icon jira">
+                        <svg width="32" height="32" viewBox="0 0 24 24">
+                            <path d="M11.53 2c0 2.4 1.97 4.37 4.37 4.37h4.1v4.1c0 2.4 1.97 4.37 4.37 4.37V20c0 2.21-1.79 4-4 4H6c-2.21 0-4-1.79-4-4V8c0-2.21 1.79-4 4-4h5.53z"/>
+                        </svg>
+                    </div>
+                    <div class="connection-details">
+                        <h4>Jira</h4>
+                        <span class="connection-status status-disconnected">Not Connected</span>
+                    </div>
+                    <div class="connection-actions">
+                        <button class="btn-small btn-outline" onclick="scrollToSection('jira-config')">Configure</button>
+                    </div>
+                </div>
+                
+                <div class="connection-item">
+                    <div class="connection-icon confluence">
+                        <svg width="32" height="32" viewBox="0 0 24 24">
+                            <path d="M19.31 8.5a2.5 2.5 0 0 0-2.17-1.25c-.72 0-1.39.31-1.85.85L11.35 12l3.94 3.9c.46.54 1.13.85 1.85.85a2.5 2.5 0 0 0 2.17-1.25c.22-.4.34-.85.34-1.32v-5.36c0-.47-.12-.92-.34-1.32z"/>
+                        </svg>
+                    </div>
+                    <div class="connection-details">
+                        <h4>Confluence</h4>
+                        <span class="connection-status status-disconnected">Not Connected</span>
+                    </div>
+                    <div class="connection-actions">
+                        <button class="btn-small btn-outline" onclick="scrollToSection('confluence-config')">Configure</button>
+                    </div>
+                </div>
+                
+                <div class="connection-item">
+                    <div class="connection-icon bitbucket">
+                        <svg width="32" height="32" viewBox="0 0 24 24">
+                            <path d="M1.17 2.15c-.17 0-.32.14-.32.32 0 .03 0 .06.01.09l2.5 15.28c.02.17.17.3.34.3h16.66c.13 0 .25-.11.28-.24l2.5-15.28c.03-.18-.1-.34-.28-.37h-.04L1.17 2.15zm9.68 11.25h-1.7L7.9 7.65h8.2l-1.25 5.75z"/>
+                        </svg>
+                    </div>
+                    <div class="connection-details">
+                        <h4>Bitbucket</h4>
+                        <span class="connection-status status-disconnected">Not Connected</span>
+                    </div>
+                    <div class="connection-actions">
+                        <button class="btn-small btn-outline" onclick="scrollToSection('bitbucket-config')">Configure</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Integrations -->
+        <div class="settings-grid">
+            <!-- Jira Configuration Card -->
+            <div class="integration-card" id="jira-config">
+                <div class="integration-header">
+                    <div class="integration-icon jira">
+                        <svg width="40" height="40" viewBox="0 0 24 24">
+                            <path d="M11.53 2c0 2.4 1.97 4.37 4.37 4.37h4.1v4.1c0 2.4 1.97 4.37 4.37 4.37V20c0 2.21-1.79 4-4 4H6c-2.21 0-4-1.79-4-4V8c0-2.21 1.79-4 4-4h5.53z"/>
+                        </svg>
+                    </div>
+                    <div class="integration-title">
+                        <h3>Jira Integration</h3>
+                        <p>Connect to Jira for tickets, sprints, and project data</p>
+                    </div>
+                </div>
+                
+                <div class="integration-form">
+                    <div class="form-group">
+                        <label class="form-label" for="jiraUrl">
+                            <span class="label-icon">🌐</span>
+                            Server URL
+                        </label>
+                        <input type="url" id="jiraUrl" class="form-input" placeholder="https://yourcompany.atlassian.net">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="jiraUsername">
+                                <span class="label-icon">👤</span>
+                                Username/Email
+                            </label>
+                            <input type="text" id="jiraUsername" class="form-input" placeholder="your-email@company.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="jiraToken">
+                                <span class="label-icon">🔑</span>
+                                API Token
+                            </label>
+                            <input type="password" id="jiraToken" class="form-input" placeholder="Your Jira API token">
+                        </div>
+                    </div>
+                    
+                    <div class="help-text">
+                        <span class="help-icon">💡</span>
+                        Generate an API token from your Jira account settings → Security → API tokens
+                    </div>
+                </div>
+                
+                <div class="integration-actions">
+                    <button class="btn-test" onclick="testJiraConnection()">Test Connection</button>
+                    <button class="btn-save" onclick="saveJiraSettings()">Save</button>
+                </div>
+            </div>
+
+            <!-- Confluence Configuration Card -->
+            <div class="integration-card" id="confluence-config">
+                <div class="integration-header">
+                    <div class="integration-icon confluence">
+                        <svg width="40" height="40" viewBox="0 0 24 24">
+                            <path d="M19.31 8.5a2.5 2.5 0 0 0-2.17-1.25c-.72 0-1.39.31-1.85.85L11.35 12l3.94 3.9c.46.54 1.13.85 1.85.85a2.5 2.5 0 0 0 2.17-1.25c.22-.4.34-.85.34-1.32v-5.36c0-.47-.12-.92-.34-1.32z"/>
+                        </svg>
+                    </div>
+                    <div class="integration-title">
+                        <h3>Confluence Integration</h3>
+                        <p>Connect to Confluence for documentation and knowledge base</p>
+                    </div>
+                </div>
+                
+                <div class="integration-form">
+                    <div class="form-group">
+                        <label class="form-label" for="confluenceUrl">
+                            <span class="label-icon">🌐</span>
+                            Server URL
+                        </label>
+                        <input type="url" id="confluenceUrl" class="form-input" placeholder="https://yourcompany.atlassian.net/wiki">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="confluenceUsername">
+                                <span class="label-icon">👤</span>
+                                Username/Email
+                            </label>
+                            <input type="text" id="confluenceUsername" class="form-input" placeholder="your-email@company.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="confluenceToken">
+                                <span class="label-icon">🔑</span>
+                                API Token
+                            </label>
+                            <input type="password" id="confluenceToken" class="form-input" placeholder="Your Confluence API token">
+                        </div>
+                    </div>
+                    
+                    <div class="help-text">
+                        <span class="help-icon">💡</span>
+                        Use the same API token as Jira if using Atlassian Cloud
+                    </div>
+                </div>
+                
+                <div class="integration-actions">
+                    <button class="btn-test" onclick="testConfluenceConnection()">Test Connection</button>
+                    <button class="btn-save" onclick="saveConfluenceSettings()">Save</button>
+                </div>
+            </div>
+
+            <!-- Bitbucket Configuration Card -->
+            <div class="integration-card" id="bitbucket-config">
+                <div class="integration-header">
+                    <div class="integration-icon bitbucket">
+                        <svg width="40" height="40" viewBox="0 0 24 24">
+                            <path d="M1.17 2.15c-.17 0-.32.14-.32.32 0 .03 0 .06.01.09l2.5 15.28c.02.17.17.3.34.3h16.66c.13 0 .25-.11.28-.24l2.5-15.28c.03-.18-.1-.34-.28-.37h-.04L1.17 2.15zm9.68 11.25h-1.7L7.9 7.65h8.2l-1.25 5.75z"/>
+                        </svg>
+                    </div>
+                    <div class="integration-title">
+                        <h3>Bitbucket Integration</h3>
+                        <p>Connect to Bitbucket for code repositories and CI/CD data</p>
+                    </div>
+                </div>
+                
+                <div class="integration-form">
+                    <div class="form-group">
+                        <label class="form-label" for="bitbucketUrl">
+                            <span class="label-icon">🌐</span>
+                            Server URL
+                        </label>
+                        <input type="url" id="bitbucketUrl" class="form-input" placeholder="https://bitbucket.org/yourworkspace">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="bitbucketUsername">
+                                <span class="label-icon">👤</span>
+                                Username
+                            </label>
+                            <input type="text" id="bitbucketUsername" class="form-input" placeholder="your-username">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="bitbucketToken">
+                                <span class="label-icon">🔑</span>
+                                App Password
+                            </label>
+                            <input type="password" id="bitbucketToken" class="form-input" placeholder="Your Bitbucket app password">
+                        </div>
+                    </div>
+                    
+                    <div class="help-text">
+                        <span class="help-icon">💡</span>
+                        Generate an app password from Bitbucket account settings → App passwords
+                    </div>
+                </div>
+                
+                <div class="integration-actions">
+                    <button class="btn-test" onclick="testBitbucketConnection()">Test Connection</button>
+                    <button class="btn-save" onclick="saveBitbucketSettings()">Save</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        function testConnections() {
+            const button = event.target;
+            const originalText = button.textContent;
+            
+            button.textContent = 'Testing...';
+            button.disabled = true;
+            
+            // Simulate connection testing
+            setTimeout(() => {
+                button.textContent = 'Connections OK ✓';
+                button.style.background = '#27ae60';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                    button.disabled = false;
+                }, 3000);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

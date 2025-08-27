@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SICPA Audits - Create New Audit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="https://www.sicpa.com/themes/custom/sicpa_theme/images/logos/Logo_Sicpa_RGB.svg" alt="SICPA Logo" class="sidebar-logo">
+            <div class="sidebar-title">SICPA Audits</div>
+        </div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="main.html" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                        </svg>
+                        Audits
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                        </svg>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>Create New Audit</h1>
+            <div class="user-info">
+                <div class="user-avatar">JD</div>
+                <span class="user-name">John Doe</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+        
+        <form id="auditCreationForm" onsubmit="handleAuditCreation(event)">
+            <!-- Basic Information Section -->
+            <div class="card">
+                <h2>📋 Basic Information</h2>
+                <p style="color: #666; margin-bottom: 30px;">Define the basic details of your audit project.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="auditName">Audit Name *</label>
+                        <input type="text" id="auditName" class="form-input" placeholder="e.g., E-Commerce Platform Q4 2024" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="projectName">Project Name *</label>
+                        <input type="text" id="projectName" class="form-input" placeholder="e.g., Online Store Redesign" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="category">Category *</label>
+                        <select id="category" class="form-input" required>
+                            <option value="">Select a category</option>
+                            <option value="development">Software Development</option>
+                            <option value="security">Security Assessment</option>
+                            <option value="performance">Performance Analysis</option>
+                            <option value="integration">System Integration</option>
+                            <option value="migration">Data Migration</option>
+                            <option value="compliance">Compliance Review</option>
+                            <option value="infrastructure">Infrastructure</option>
+                            <option value="quality">Quality Assurance</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="priority">Priority Level</label>
+                        <select id="priority" class="form-input">
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                            <option value="high">High</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea id="description" class="form-input" rows="4" placeholder="Describe the purpose, scope, and objectives of this audit..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Time & Scope Configuration -->
+            <div class="card">
+                <h2>📅 Time & Scope Configuration</h2>
+                <p style="color: #666; margin-bottom: 30px;">Configure the temporal scope and analysis parameters for your audit.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="timeRange">Time Range *</label>
+                        <select id="timeRange" class="form-input" required>
+                            <option value="last1month">Last 1 Month</option>
+                            <option value="last3months" selected>Last 3 Months</option>
+                            <option value="last6months">Last 6 Months</option>
+                            <option value="last1year">Last 1 Year</option>
+                            <option value="custom">Custom Date Range</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="customDateGroup" style="display: none;">
+                        <label class="form-label" for="startDate">Start Date</label>
+                        <input type="date" id="startDate" class="form-input">
+                    </div>
+                    
+                    <div class="form-group" id="customDateGroup2" style="display: none;">
+                        <label class="form-label" for="endDate">End Date</label>
+                        <input type="date" id="endDate" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="includeWeekends">Include Weekends</label>
+                        <select id="includeWeekends" class="form-input">
+                            <option value="no">No - Business Days Only</option>
+                            <option value="yes">Yes - Include Weekends</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team & Project Filters -->
+            <div class="card">
+                <h2>👥 Team & Project Filters</h2>
+                <p style="color: #666; margin-bottom: 30px;">Define team composition and project-specific parameters for analysis.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="teamSize">Expected Team Size</label>
+                        <select id="teamSize" class="form-input">
+                            <option value="">Any Size</option>
+                            <option value="small">Small (1-5 members)</option>
+                            <option value="medium">Medium (6-15 members)</option>
+                            <option value="large">Large (15+ members)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="sprintDuration">Sprint Duration</label>
+                        <select id="sprintDuration" class="form-input">
+                            <option value="">Any Duration</option>
+                            <option value="1week">1 Week</option>
+                            <option value="2weeks">2 Weeks</option>
+                            <option value="3weeks">3 Weeks</option>
+                            <option value="4weeks">4 Weeks</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="methodology">Development Methodology</label>
+                        <select id="methodology" class="form-input">
+                            <option value="">Any Methodology</option>
+                            <option value="agile">Agile/Scrum</option>
+                            <option value="kanban">Kanban</option>
+                            <option value="waterfall">Waterfall</option>
+                            <option value="devops">DevOps</option>
+                            <option value="lean">Lean</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="department">Department</label>
+                        <select id="department" class="form-input">
+                            <option value="">All Departments</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="product">Product</option>
+                            <option value="design">Design</option>
+                            <option value="qa">Quality Assurance</option>
+                            <option value="devops">DevOps</option>
+                            <option value="security">Security</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Sources Configuration -->
+            <div class="card">
+                <h2>🔗 Data Sources Configuration</h2>
+                <p style="color: #666; margin-bottom: 30px;">Select and configure the data sources for your audit analysis.</p>
+                
+                <div class="data-sources-grid">
+                    <div class="data-source-card">
+                        <div class="data-source-header">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="sources" value="jira" checked>
+                                <svg width="24" height="24" viewBox="0 0 24 24" style="fill: #0052CC;">
+                                    <path d="M11.53 2c0 2.4 1.97 4.37 4.37 4.37h4.1v4.1c0 2.4 1.97 4.37 4.37 4.37V20c0 2.21-1.79 4-4 4H6c-2.21 0-4-1.79-4-4V8c0-2.21 1.79-4 4-4h5.53z"/>
+                                </svg>
+                                <span class="source-name">Jira</span>
+                            </label>
+                        </div>
+                        <div class="data-source-options">
+                            <label class="option-label">
+                                <input type="checkbox" name="jira-options" value="tickets" checked> Tickets & Issues
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" name="jira-options" value="sprints" checked> Sprints & Boards
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" name="jira-options" value="workflows"> Workflows
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" name="jira-options" value="users"> User Activity
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="data-source-card">
+                        <div class="data-source-header">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="sources" value="confluence" checked>
+                                <svg width="24" height="24" viewBox="0 0 24 24" style="fill: #172B4D;">
+                                    <path d="M19.31 8.5a2.5 2.5 0 0 0-2.17-1.25c-.72 0-1.39.31-1.85.85L11.35 12l3.94 3.9c.46.54 1.13.85 1.85.85a2.5 2.5 0 0 0 2.17-1.25c.22-.4.34-.85.34-1.32v-5.36c0-.47-.12-.92-.34-1.32z"/>
+                                </svg>
+                                <span class="source-name">Confluence</span>
+                            </label>
+                        </div>
+                        <div class="data-source-options">
+                            <label class="option-label">
+                                <input type="checkbox" name="confluence-options" value="pages" checked> Pages & Documentation
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" name="confluence-options" value="spaces"> Spaces
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" name="confluence-options" value="comments"> Comments & Reviews
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" name="confluence-options" value="attachments"> Attachments
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="data-source-card">
+                        <div class="data-source-header">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="sources" value="bitbucket" checked>
+                                <svg width="24" height="24" viewBox="0 0 24 24" style="fill: #0052CC;">
+                                    <path d="M1.17 2.15c-.17 0-.32.14-.32.32 0 .03 0 .06.01.09l2.5 15.28c.02.17.17.3.34.3h16.66c.13 0 .25-.11.28-.24l2.5-15.28c.03-.18-.1-.34-.28-.37h-.04L1.17 2.15zm9.68 11.25h-1.7L7.9 7.65h8.2l-1.25 5.75z"/>
+                                </svg>
+                                <span class="source-name">Bitbucket</span>
+                            </label>
+                        </div>
+                        <div class="data-source-options">
+                            <label class="option-label">
+                                <input type="checkbox" name="bitbucket-options" value="commits" checked> Commits & History
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" name="bitbucket-options" value="pullrequests" checked> Pull Requests
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" name="bitbucket-options" value="branches"> Branches
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" name="bitbucket-options" value="pipelines"> Pipelines & CI/CD
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Advanced Analysis Options -->
+            <div class="card">
+                <h2>🔬 Advanced Analysis Options</h2>
+                <p style="color: #666; margin-bottom: 30px;">Configure advanced analysis parameters and output preferences.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="analysisDepth">Analysis Depth</label>
+                        <select id="analysisDepth" class="form-input">
+                            <option value="standard">Standard Analysis</option>
+                            <option value="detailed">Detailed Analysis</option>
+                            <option value="comprehensive">Comprehensive Analysis</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="reportFormat">Report Format</label>
+                        <select id="reportFormat" class="form-input">
+                            <option value="json">JSON Report</option>
+                            <option value="pdf">PDF Report</option>
+                            <option value="excel">Excel Spreadsheet</option>
+                            <option value="dashboard">Interactive Dashboard</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="confidentialityLevel">Confidentiality Level</label>
+                        <select id="confidentialityLevel" class="form-input">
+                            <option value="internal">Internal Use</option>
+                            <option value="confidential">Confidential</option>
+                            <option value="restricted">Restricted</option>
+                            <option value="public">Public</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="notifications">Email Notifications</label>
+                        <select id="notifications" class="form-input">
+                            <option value="all">All Updates</option>
+                            <option value="important">Important Only</option>
+                            <option value="completion">Completion Only</option>
+                            <option value="none">None</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="advanced-options">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">Additional Options</h4>
+                    <div class="checkbox-grid">
+                        <label class="option-label">
+                            <input type="checkbox" name="advanced-options" value="compare-previous" checked> Compare with Previous Period
+                        </label>
+                        <label class="option-label">
+                            <input type="checkbox" name="advanced-options" value="recommendations" checked> Generate Recommendations
+                        </label>
+                        <label class="option-label">
+                            <input type="checkbox" name="advanced-options" value="trends" checked> Include Trend Analysis
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="card">
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="window.location.href='main.html'">
+                        Cancel
+                    </button>
+                    <button type="button" class="btn-secondary" onclick="saveAsDraft()">
+                        Save as Draft
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        🚀 Create Audit & Start Analysis
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Handle custom date range visibility
+        document.getElementById('timeRange').addEventListener('change', function() {
+            const customGroups = document.querySelectorAll('#customDateGroup, #customDateGroup2');
+            if (this.value === 'custom') {
+                customGroups.forEach(group => group.style.display = 'block');
+            } else {
+                customGroups.forEach(group => group.style.display = 'none');
+            }
+        });
+        
+        // Handle data source dependencies
+        document.querySelectorAll('input[name="sources"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const sourceCard = this.closest('.data-source-card');
+                const options = sourceCard.querySelectorAll('.data-source-options input');
+                options.forEach(option => {
+                    option.disabled = !this.checked;
+                    if (!this.checked) option.checked = false;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

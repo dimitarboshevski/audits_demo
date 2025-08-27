@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SICPA Audits - Audit Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body class="dashboard">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="https://www.sicpa.com/themes/custom/sicpa_theme/images/logos/Logo_Sicpa_RGB.svg" alt="SICPA Logo" class="sidebar-logo">
+            <div class="sidebar-title">SICPA Audits</div>
+        </div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="main.html" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                        </svg>
+                        Audits
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                        </svg>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>New Audit</h1>
+            <div class="user-info">
+                <div class="user-avatar">JD</div>
+                <span class="user-name">John Doe</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+        
+        <!-- Input Filters Section -->
+        <div class="filters">
+            <h2>🔍 Configure Audit Parameters</h2>
+            <p style="color: #666; margin-bottom: 30px;">Set up your audit filters to extract and analyze data from your connected systems.</p>
+            
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label class="filter-label">Time Range</label>
+                    <select id="timeRange" class="filter-select">
+                        <option value="last1month">Last 1 Month</option>
+                        <option value="last3months" selected>Last 3 Months</option>
+                        <option value="last6months">Last 6 Months</option>
+                        <option value="last1year">Last 1 Year</option>
+                        <option value="custom">Custom Range</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">Project</label>
+                    <select id="project" class="filter-select">
+                        <option value="">All Projects</option>
+                        <option value="project-alpha">Project Alpha</option>
+                        <option value="project-beta">Project Beta</option>
+                        <option value="project-gamma">Project Gamma</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">Team Size Filter</label>
+                    <select id="teamSize" class="filter-select">
+                        <option value="">Any Size</option>
+                        <option value="small">Small (1-5 members)</option>
+                        <option value="medium">Medium (6-15 members)</option>
+                        <option value="large">Large (15+ members)</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">Sprint Duration</label>
+                    <select id="sprintDuration" class="filter-select">
+                        <option value="">Any Duration</option>
+                        <option value="1week">1 Week</option>
+                        <option value="2weeks">2 Weeks</option>
+                        <option value="3weeks">3 Weeks</option>
+                        <option value="4weeks">4 Weeks</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div style="margin: 30px 0 20px 0;">
+                <label class="filter-label">Data Sources</label>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <label style="display: flex; align-items: center; color: #2c3e50;">
+                        <input type="checkbox" name="sources" value="jira" checked style="margin-right: 8px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" style="margin-right: 8px; fill: #0052CC;">
+                            <path d="M11.53 2c0 2.4 1.97 4.37 4.37 4.37h4.1v4.1c0 2.4 1.97 4.37 4.37 4.37V20c0 2.21-1.79 4-4 4H6c-2.21 0-4-1.79-4-4V8c0-2.21 1.79-4 4-4h5.53z"/>
+                        </svg>
+                        Jira
+                    </label>
+                    <label style="display: flex; align-items: center; color: #2c3e50;">
+                        <input type="checkbox" name="sources" value="confluence" checked style="margin-right: 8px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" style="margin-right: 8px; fill: #172B4D;">
+                            <path d="M19.31 8.5a2.5 2.5 0 0 0-2.17-1.25c-.72 0-1.39.31-1.85.85L11.35 12l3.94 3.9c.46.54 1.13.85 1.85.85a2.5 2.5 0 0 0 2.17-1.25c.22-.4.34-.85.34-1.32v-5.36c0-.47-.12-.92-.34-1.32z"/>
+                        </svg>
+                        Confluence
+                    </label>
+                    <label style="display: flex; align-items: center; color: #2c3e50;">
+                        <input type="checkbox" name="sources" value="bitbucket" checked style="margin-right: 8px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" style="margin-right: 8px; fill: #0052CC;">
+                            <path d="M1.17 2.15c-.17 0-.32.14-.32.32 0 .03 0 .06.01.09l2.5 15.28c.02.17.17.3.34.3h16.66c.13 0 .25-.11.28-.24l2.5-15.28c.03-.18-.1-.34-.28-.37h-.04L1.17 2.15zm9.68 11.25h-1.7L7.9 7.65h8.2l-1.25 5.75z"/>
+                        </svg>
+                        Bitbucket
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-actions">
+                <button class="btn-primary" onclick="startAnalysis()">
+                    🚀 Start Analysis
+                </button>
+            </div>
+        </div>
+        
+        <!-- Analysis Steps Section -->
+        <div class="analysis-steps">
+            <!-- Step 1: Data Extraction -->
+            <div class="step" id="step-extraction">
+                <div class="step-header">
+                    <div class="step-icon">1</div>
+                    <div class="step-title">Data Extraction</div>
+                </div>
+                <div class="step-content">
+                    <p>Connecting to your configured systems and extracting project data...</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <ul style="margin-top: 15px; color: #666; font-size: 14px;">
+                        <li>Extracting Jira tickets and metadata</li>
+                        <li>Fetching Confluence documentation</li>
+                        <li>Analyzing Bitbucket repositories and commits</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Step 2: Data Ingestion -->
+            <div class="step" id="step-ingestion">
+                <div class="step-header">
+                    <div class="step-icon">2</div>
+                    <div class="step-title">Data Ingestion</div>
+                </div>
+                <div class="step-content">
+                    <p>Processing and normalizing the extracted data for analysis...</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <ul style="margin-top: 15px; color: #666; font-size: 14px;">
+                        <li>Standardizing data formats</li>
+                        <li>Mapping user identities across systems</li>
+                        <li>Creating unified timeline</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Step 3: Data Analysis -->
+            <div class="step" id="step-analysis">
+                <div class="step-header">
+                    <div class="step-icon">3</div>
+                    <div class="step-title">Data Analysis</div>
+                </div>
+                <div class="step-content">
+                    <p>Analyzing patterns, trends, and extracting insights from your project data...</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <ul style="margin-top: 15px; color: #666; font-size: 14px;">
+                        <li>Calculating team velocity and performance metrics</li>
+                        <li>Identifying workflow patterns and bottlenecks</li>
+                        <li>Analyzing code quality and review processes</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Step 4: Fact Generation -->
+            <div class="step" id="step-facts">
+                <div class="step-header">
+                    <div class="step-icon">4</div>
+                    <div class="step-title">Key Facts Identification</div>
+                </div>
+                <div class="step-content">
+                    <p>Based on the analysis, here are the key facts we've identified:</p>
+                    
+                    <div style="margin: 20px 0;">
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">📊 Extracted Facts</h4>
+                        <ul id="factsList" class="facts-list">
+                            <!-- Facts will be populated here -->
+                        </ul>
+                    </div>
+                    
+                    <div style="margin: 30px 0 20px 0;">
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">➕ Add Custom Fact</h4>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <input type="text" id="newFactText" class="form-input" placeholder="Enter a custom fact about your project..." style="flex: 1;">
+                            <button class="btn-primary" onclick="addCustomFact()" style="min-width: 100px;">Add Fact</button>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <button class="btn-primary" onclick="proceedToFinalAnalysis()">
+                            Continue to Final Analysis
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 5: Final Dashboard -->
+            <div class="step" id="step-dashboard" style="display: none;">
+                <div class="step-header">
+                    <div class="step-icon">5</div>
+                    <div class="step-title">Final Analysis Dashboard</div>
+                </div>
+                <div class="step-content">
+                    <p>Your comprehensive audit analysis is ready! Here's your project dashboard:</p>
+                    
+                    <!-- KPI Cards -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card primary">
+                            <div class="kpi-icon">📊</div>
+                            <div class="kpi-content">
+                                <div class="kpi-value" id="totalStories">156</div>
+                                <div class="kpi-label">Total Stories</div>
+                                <div class="kpi-trend up">+12% from last period</div>
+                            </div>
+                        </div>
+                        <div class="kpi-card success">
+                            <div class="kpi-icon">✅</div>
+                            <div class="kpi-content">
+                                <div class="kpi-value" id="completionRate">89%</div>
+                                <div class="kpi-label">Completion Rate</div>
+                                <div class="kpi-trend up">+5% improvement</div>
+                            </div>
+                        </div>
+                        <div class="kpi-card warning">
+                            <div class="kpi-icon">⏱️</div>
+                            <div class="kpi-content">
+                                <div class="kpi-value" id="avgDays">3.2</div>
+                                <div class="kpi-label">Avg Days/Story</div>
+                                <div class="kpi-trend down">-0.8 days improved</div>
+                            </div>
+                        </div>
+                        <div class="kpi-card info">
+                            <div class="kpi-icon">👥</div>
+                            <div class="kpi-content">
+                                <div class="kpi-value" id="teamMembers">8</div>
+                                <div class="kpi-label">Team Members</div>
+                                <div class="kpi-trend neutral">Stable team size</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Section -->
+                    <div class="charts-section">
+                        <div class="chart-row">
+                            <div class="chart-card">
+                                <h4>📈 Team Velocity Trend</h4>
+                                <div class="chart-container">
+                                    <svg id="velocityChart" width="100%" height="200"></svg>
+                                </div>
+                            </div>
+                            <div class="chart-card">
+                                <h4>🎯 Sprint Burndown</h4>
+                                <div class="chart-container">
+                                    <svg id="burndownChart" width="100%" height="200"></svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-row">
+                            <div class="chart-card">
+                                <h4>🐛 Bug Trends</h4>
+                                <div class="chart-container">
+                                    <svg id="bugChart" width="100%" height="200"></svg>
+                                </div>
+                            </div>
+                            <div class="chart-card">
+                                <h4>👥 Team Distribution</h4>
+                                <div class="chart-container">
+                                    <svg id="teamChart" width="100%" height="200"></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Summary Section -->
+                    <div class="summary-section">
+                        <h3>📋 Executive Summary</h3>
+                        <div class="summary-content" id="summaryContent">
+                            <!-- Summary will be generated here -->
+                        </div>
+                    </div>
+
+                    <!-- Key Insights -->
+                    <div class="insights-section">
+                        <h3>💡 Key Insights & Recommendations</h3>
+                        <div class="insights-grid" id="insightsGrid">
+                            <!-- Insights will be generated here -->
+                        </div>
+                    </div>
+
+                    <!-- Download Section -->
+                    <div class="download-section">
+                        <div class="download-options">
+                            <button class="btn-download" onclick="downloadReport('pdf')">
+                                📄 Download PDF Report
+                            </button>
+                            <button class="btn-download" onclick="downloadReport('excel')">
+                                📊 Download Excel Data
+                            </button>
+                            <button class="btn-download" onclick="downloadReport('json')">
+                                📁 Download Raw Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="charts.js"></script>
+</body>
+</html>

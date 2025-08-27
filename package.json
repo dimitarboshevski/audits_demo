@@ -1,0 +1,35 @@
+{
+  "name": "sicpa-audits",
+  "version": "1.0.0",
+  "description": "SICPA Audits - Project Audit Analysis Platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "npx serve .",
+    "dev": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "audit",
+    "analytics",
+    "jira",
+    "confluence",
+    "bitbucket",
+    "d3js",
+    "dashboard"
+  ],
+  "author": "SICPA",
+  "license": "PROPRIETARY",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/sicpa-audits.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/sicpa-audits/issues"
+  },
+  "homepage": "https://github.com/your-org/sicpa-audits#readme"
+}
